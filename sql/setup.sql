@@ -7,9 +7,9 @@ DROP TABLE IF EXISTS authors;
 
 CREATE TABLE books (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  name VARCHAR,
-  dob BIGINT,
-  pob VARCHAR
+  title VARCHAR,
+  released BIGINT,
+  Authors VARCHAR
 );
 
 CREATE TABLE authors (
@@ -22,10 +22,10 @@ CREATE TABLE authors (
 CREATE TABLE book_author (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   author_id BIGINT,
-  book_id BIGINT
+  book_id BIGINT,
   FOREIGN KEY (author_id) REFERENCES authors(id),
   FOREIGN KEY (book_id) REFERENCES books(id)
-)
+);
 
 INSERT INTO
   books (title, released)
